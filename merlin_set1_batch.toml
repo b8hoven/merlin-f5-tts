@@ -1,0 +1,11 @@
+model = "F5TTS_v1_Base"
+ref_audio = "audio/john_hurt_trimmed2.wav"
+ref_text = "In this role I've participated in the telling of many stories. They were set in many different cultures, and involved many people from all races, religions and political beliefs."
+remove_silence = false
+output_dir = "outputs_vocos"
+# seed = 42
+
+# Uncomment if you want a fixed speed, e.g.:
+# speed = 1.0
+
+gen_file = "text/merlin-set1.txt"

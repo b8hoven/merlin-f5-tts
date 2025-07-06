@@ -174,7 +174,47 @@ parser.add_argument(
     type=str,
     help="Specify the device to run on",
 )
+parser.add_argument(
+    "--seed",
+    type=int,
+    default=None,
+    help="Set random seed for deterministic output (matches Gradio)."
+)
 args = parser.parse_args()
+import torch
+import numpy as np
+
+seed = args.seed
+if seed is None or seed < 0 or seed > 2**31 - 1:
+    print("[INFO] No valid seed specified; generating a random seed.")
+    seed = np.random.randint(0, 2**31 - 1)
+else:
+    print(f"[INFO] Using user-specified seed: {seed}")
+
+# Set all relevant seeds for reproducibility
+torch.manual_seed(seed)
+torch.cuda.manual_seed_all(seed)
+np.random.seed(seed)
+try:
+    import random
+    random.seed(seed)
+except ImportError:
+    pass
+try:
+    import torch.backends.cudnn as cudnn
+    cudnn.deterministic = True
+    cudnn.benchmark = False
+except ImportError:
+    pass
+
+# (Optional) Save seed to output_dir for reproducibility
+if args.output_dir:
+    try:
+        os.makedirs(args.output_dir, exist_ok=True)
+        with open(os.path.join(args.output_dir, "used_seed.txt"), "w") as f:
+            f.write(str(seed) + "\n")
+    except Exception as e:
+        print(f"[WARNING] Could not write used_seed.txt: {e}")
 
 
 # config file

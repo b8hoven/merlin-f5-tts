@@ -6,6 +6,11 @@ data/
 ckpts/
 wandb/
 results/
+output_wavs/
+audio/
+checkpoints/
+output*/
+src/vocoders/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
