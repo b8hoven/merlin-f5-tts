@@ -1,0 +1,13 @@
+{
+  "ref_key": "jh_inthisrole-9s.wav",
+  "phrase_file": "merlin-set3.txt",
+  "filename_prefix": "merlin",
+  "model": "F5TTS_v1_Base",
+  "speed": 0.8,
+  "nfe_step": 32,
+  "cross_fade": 0.15,
+  "remove_silence": false,
+  "dry_run": false,
+  "start_index": 1,
+  "seed": null
+}
