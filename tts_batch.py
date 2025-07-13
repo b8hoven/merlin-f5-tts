@@ -3,8 +3,9 @@ import subprocess
 import random
 
 # ===== USER-ADJUSTABLE VARIABLES =====
-PHRASE_FILE = 'text/merlin-set1.txt'
-OUTPUT_DIR = 'output_wavs'
+PHRASE_FILE = 'text/merlin-set2.txt'
+filename = os.path.splitext(os.path.basename(PHRASE_FILE))[0]
+OUTPUT_DIR = f'output_wavs/{filename}'
 FILENAME_PREFIX = 'merlin'
 METADATA_FILENAME = 'metadata.txt'  # will be written in OUTPUT_DIR
 DRY_RUN = False
